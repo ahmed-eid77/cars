@@ -12,4 +12,8 @@ class BlogController extends Controller
         $blogs = Blog::all();
         return view('site.blog.index', compact('blogs'));
     }
+
+    public function show(Blog $blog){
+        return view('site.blog.show', compact('blog'));
+    }
 }

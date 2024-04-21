@@ -235,6 +235,11 @@
             <li><a href="{{ route('about-us.index') }}">نبذة عنا</a></li>
             <li><a href="{{ route('blog.index') }}" class="smoothScroll">المدونات</a></li>
             <li><a href="{{ route('contact') }}" class="smoothScroll">تواصل معانا</a></li>
+            @auth
+                @if (Auth::user()->is_agency)
+                    <li><a href="{{ route('agency.index') }}" class="smoothScroll">المعرض</a></li>
+                @endif
+            @endauth
         </ul>
     </div>
     {{-- <div class="nav-button">

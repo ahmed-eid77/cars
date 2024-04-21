@@ -23,7 +23,7 @@
                                 <h4><a href="#.">{{ $blog->title }}</a></h4>
                                 <div class="postmeta">By : <span>{{ $blog->author }} </span> Category : <a href="#.">{{ $blog->category }}</a>
                                 </div>
-                                <a href="#." class="readmore">Read More <i class="fa fa-long-arrow-right"
+                                <a href="{{ route('blog.show',['blog' => $blog->id]) }}" class="readmore">Read More <i class="fa fa-long-arrow-right"
                                         aria-hidden="true"></i></a>
                             </div>
                         </div>

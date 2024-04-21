@@ -22,7 +22,7 @@ return new class extends Migration
             $table->enum('transmission', ['manual', 'automatic']);
             $table->string('air_conditioning');
             $table->integer('minimum_age');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

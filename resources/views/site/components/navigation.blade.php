@@ -20,7 +20,7 @@
                     <li><a href="{{ route('about-us.index') }}">نبذة عنا</a></li>
                     <li><a href="{{ route('services.index') }}" class="smoothScroll">الخدمات</a></li>
                     -
-                    {{-- <li><a href="{{ route('blog.index') }}" class="smoothScroll">Blog</a></li> --}}
+                    <li><a href="{{ route('blog.index') }}" class="smoothScroll">Blog</a></li>
                     {{-- <li><a href="#team" class="smoothScroll">Support</a></li> --}}
                     {{-- <li><a href="#testimonials" class="smoothScroll">Clients</a></li> --}}
                     {{-- <li><a href="{{ route('contact') }}" class="smoothScroll">Contact</a></li> --}}

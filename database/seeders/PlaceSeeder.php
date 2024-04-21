@@ -292,6 +292,6 @@ class PlaceSeeder extends Seeder
         }
 
         // To Create Random Cities
-        //Place::factory()->count(20)->create();
+        // Place::factory()->count(200)->create();
     }
 }
