@@ -58,8 +58,6 @@ class CarController extends Controller
             ]);
         }
 
-        dd(Auth::user()->agency->id);
-
         // Create the car with validated data including the image path
         Car::create($requestData);
         return back()->with('success', 'تم اضافة السيارة بنجاح.');
