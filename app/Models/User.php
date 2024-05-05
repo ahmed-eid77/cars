@@ -55,5 +55,10 @@ class User extends Authenticatable
         return $this->hasOne(Agency::class);
     }
 
+    public function rates()
+{
+    return $this->hasMany(Rate::class);
+}
+
     
 }

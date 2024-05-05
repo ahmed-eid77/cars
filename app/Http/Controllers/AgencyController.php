@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AgencyRequest;
 use App\Models\Agency;
+use App\Models\Blog;
 use App\Models\Car;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -30,5 +31,11 @@ class AgencyController extends Controller
         return redirect()->route('agency.index')->with('success', 'تم إنشاء المعرض بنجاح.');
     }
 
-    
+    public function Myblogs(){
+        if(Auth::user()->isAgnecy()){
+            $blogs = Blog::where('user_id', Auth::user()->id)->with('user')->get();
+            // dd($blogs);
+            return view('site.agency.blogs.index', compact('blogs'));
+        }
+    }
 }

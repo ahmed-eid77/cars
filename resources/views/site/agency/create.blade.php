@@ -38,7 +38,7 @@
                     <div class="form-group">
                         <label for="phone" class="col-sm-3 control-label">التليفون</label>
                         <div class="col-sm-9">
-                            <input type="tel" class="form-control" name="phone" id="phone" placeholder=""
+                            <input type="number" class="form-control" name="phone" id="phone" placeholder=""
                                 required>
                             @error('phone')
                                 <div class="text-danger">{{ $message }}</div>

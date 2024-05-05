@@ -276,15 +276,15 @@
     <div class="container">
         <section class="panel panel-default">
             <div class="panel-heading clearfix">
-                <h3 class="panel-title pull-left">السيارات</h3>
+                <h3 class="panel-title pull-left"> المدونات</h3>
                 <div class="pull-right">
-                    <a href="{{ route('agency.cars.show') }}">
-                        <button type="button" class="btn btn-primary">إضافة سيارة</button>
+                    <a href="{{ route('agency.blogs.create') }}">
+                        <button type="button" class="btn btn-primary">إضافة مدونة</button>
                     </a>
                 </div>
                 <div class="pull-right mx-2">
-                    <a href="{{ route('agency.blogs') }}">
-                        <button type="button" class="btn btn-primary">مدوانتي</button>
+                    <a href="{{ route('agency.index') }}">
+                        <button type="button" class="btn btn-primary">السيارات</button>
                     </a>
                 </div>
             </div>
@@ -294,33 +294,45 @@
                 <div class="row">
 
                     <ul class="product-list grid-products equal-container">
-                       @if(count($cars) > 0)
-                            @foreach ($cars as $car )
-                            <li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
-                                <div class="product product-style-3 equal-elem ">
-                                    <div class="product-thumnail">
-                                        @if ($car->image && file_exists(public_path($car->image)))
-                                            <a href="#" >
-                                                <figure><img src="{{ asset($car->image) }}"
-                                                        alt="{{ $car->name }}"></figure>
-                                            </a>
-                                        @else
-                                            <a href="#" >
-                                                <figure><img src="{{ asset('assets/images/cars/default-car.jpg') }}"
-                                                        alt="defaut"></figure>
-                                            </a>
-                                        @endif
+                        @if (count($blogs) > 0)
+                            @foreach ($blogs as $blog)
+                                <li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
+                                    <div class="product product-style-3 equal-elem ">
+                                        <div class="product-thumnail">
+                                            @if ($blog->image && file_exists(public_path($blog->image)))
+                                                <a href="{{ route('blog.show', ['blog' => $blog->id]) }}">
+                                                    <figure><img src="{{ asset($blog->image) }}" alt="{{ $blog->title }}">
+                                                    </figure>
+                                                </a>
+                                            @else
+                                                <a href="#">
+                                                    <figure><img src="{{ asset('assets/images/cars/default-car.jpg') }}"
+                                                            alt="defaut"></figure>
+                                                </a>
+                                            @endif
+                                        </div>
+                                        <div class="product-info">
+                                            <a href="{{ route('blog.show', ['blog' => $blog->id]) }}"
+                                                class="product-name"><span>{{ $blog->title }}</span></a>
+                                        </div>
+                                        <div class="">
+                                            <a href="{{ route('agency.blogs.edit', $blog->id) }}"><button
+                                                    class="btn btn-primary">edit</button></a>
+
+                                            <form action="{{ route('agency.blogs.destroy', $blog->id) }}" method="POST"
+                                                style="display: inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger"
+                                                    onclick="return confirm('Are you sure you want to delete this blog?')">Delete</button>
+                                            </form>
+                                        </div>
                                     </div>
-                                    <div class="product-info">
-                                        <a href="#" class="product-name"><span>{{ $car->name }}</span></a>
-                                        <div class="wrap-price"><span class="product-price">${{ $car->price }}</span></div>
-                                    </div>
-                                </div>
-                            </li>
-                        @endforeach
-                       @else
+                                </li>
+                            @endforeach
+                        @else
                             <p class="text-center">لا يوجد بيانات</p>
-                       @endif
+                        @endif
                     </ul>
 
                 </div>

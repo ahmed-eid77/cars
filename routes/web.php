@@ -7,6 +7,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AgencyController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CarController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\Newsletter;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\ReservationController;
@@ -51,6 +52,8 @@ Route::get('/dashboard', function () {
 //================================ AUTH ROUTES ================================
 Route::middleware('auth')->group(function () {
 
+    Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
+
     Route::post('/car-rental', [ReservationController::class, 'store'])->name('car-rental.store');
     
     Route::middleware('is_agency')->group(function () {
@@ -58,7 +61,14 @@ Route::middleware('auth')->group(function () {
         Route::post('/agency/add', [AgencyController::class, 'store'])->name('agency.add');
 
         Route::get('/agency/cars', [CarController::class, 'show'])->name('agency.cars.show');
+        Route::get('/agency/blogs', [AgencyController::class, 'Myblogs'])->name('agency.blogs');
         Route::post('/agency/cars/add', [CarController::class, 'store'])->name('agency.cars.add');
+
+        Route::get('/agency/blogs/create', [BlogController::class, 'create'])->name('agency.blogs.create');
+        Route::post('/agency/blogs/add', [BlogController::class, 'store'])->name('agency.blogs.store');
+        Route::get('/agency/blogs/{blog}', [BlogController::class, 'edit'])->name('agency.blogs.edit');
+        Route::put('/agency/blogs/{blog}', [BlogController::class, 'update'])->name('agency.blogs.update');
+        Route::delete('/agency/blog/{blog}', [BlogController::class, 'destroy'])->name('agency.blogs.destroy');
     });
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

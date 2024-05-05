@@ -230,17 +230,16 @@
     </div>
     <div class="nav-items">
         <ul>
-            <li><a href="{{ route('contact') }}" class="smoothScroll">تواصل معانا</a></li>
-            <li><a href="{{ route('blog.index') }}" class="smoothScroll">المدونات</a></li>
-            <li><a href="{{ route('about-us.index') }}">نبذة عنا</a></li>
-            <li><a href="{{ route('services.index') }}" class="smoothScroll">الخدمات</a></li>
-            <li><a href="/">الرئيسية</a></li>
-
             @auth
                 @if (Auth::user()->is_agency)
                     <li><a href="{{ route('agency.index') }}" class="smoothScroll">المعرض</a></li>
                 @endif
             @endauth
+            <li><a href="{{ route('contact') }}" class="smoothScroll">تواصل معانا</a></li>
+            <li><a href="{{ route('blog.index') }}" class="smoothScroll">المدونات</a></li>
+            <li><a href="{{ route('about-us.index') }}">نبذة عنا</a></li>
+            <li><a href="{{ route('services.index') }}" class="smoothScroll">الخدمات</a></li>
+            <li><a href="/">الرئيسية</a></li>
         </ul>
     </div>
     {{-- <div class="nav-button">
